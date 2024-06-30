@@ -1,7 +1,8 @@
 {
   "expo": {
-    "name": "pomodoroApp",
-    "slug": "pomodoroApp",
+    "name": "pomodoroapp",
+    "slug": "pomodoroapp",
+    "scheme": "pomodoroapp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -12,16 +13,34 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "UIBackgroundModes": ["location", "fetch", "remote-notification"]
+      },
+      "bundleIdentifier": "com.anonymous.pomodoroapp",
+      "config": {
+        "googleSignIn": {
+          "reservedClientId": "YOUR_GOOGLE_SIGN_IN_IOS_CLIENT_ID"
+        }
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
+      },
+      "package": "com.anonymous.pomodoroapp",
+      "permissions": ["RECEIVE_BOOT_COMPLETED", "NOTIFICATIONS"],
+      "notification": {
+        "icon": "./assets/icon.png",
+        "color": "#FFFFFF",
+        "androidMode": "default",
+        "androidCollapsedTitle": "New notifications"
       }
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": ["expo-router"]
   }
 }
