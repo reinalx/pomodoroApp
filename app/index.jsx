@@ -1,6 +1,6 @@
 import { View, Text, ScrollView, TouchableOpacity, Image } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { useEffect } from 'react'
+import * as NavigationBar from 'expo-navigation-bar'
 import { StatusBar } from 'expo-status-bar'
 import HeaderApp from '../components/HeaderApp'
 
@@ -8,6 +8,8 @@ import Crono from '../components/Crono'
 import LinearGradient from 'react-native-linear-gradient'
 
 const App = () => {
+  NavigationBar.setVisibilityAsync('hidden') // Oculta el navegador de la pantalla si pones hidder
+  NavigationBar.setBackgroundColorAsync('#f8fafc') // Cambia el color de fondo del navegador de la pantalla
   return (
     <LinearGradient
       colors={['#6366f1', '#0ea5e9', '#10b981']}

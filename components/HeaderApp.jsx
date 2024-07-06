@@ -17,7 +17,7 @@ const HeaderApp = () => {
         activeOpacity={0.8}
         className="absolute top-6 right-2 w-10 h-10 "
         onPress={() => {
-          router.replace('/history')
+          router.push('/history')
         }}
       >
         <Image source={icons.history} className="w-8 h-8" />

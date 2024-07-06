@@ -1,0 +1,60 @@
+BEGIN:VCALENDAR
+PRODID:-//Google Inc//Google Calendar 70.9054//EN
+VERSION:2.0
+CALSCALE:GREGORIAN
+METHOD:REQUEST
+BEGIN:VTIMEZONE
+TZID:Europe/Madrid
+X-LIC-LOCATION:Europe/Madrid
+BEGIN:DAYLIGHT
+TZOFFSETFROM:+0100
+TZOFFSETTO:+0200
+TZNAME:GMT+2
+DTSTART:19700329T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:+0200
+TZOFFSETTO:+0100
+TZNAME:GMT+1
+DTSTART:19701025T030000
+RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Madrid:20240704T120000
+DTEND;TZID=Europe/Madrid:20240704T123000
+DTSTAMP:20240702T094359Z
+ORGANIZER;CN=Elodie Garrido Losada:mailto:elodie.garrido@sngular.com
+UID:7ab0lafh2aqikkat6acbegeagq@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=
+ TRUE;X-NUM-GUESTS=0:mailto:daniel.ramos@sngular.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;RSVP=TRUE
+ ;X-NUM-GUESTS=0:mailto:ruben.morgade@sngular.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;RSVP=TRUE
+ ;CN=Elodie Garrido Losada;X-NUM-GUESTS=0:mailto:elodie.garrido@sngular.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=
+ TRUE;CN=a.reinaldo@udc.es;X-NUM-GUESTS=0:mailto:a.reinaldo@udc.es
+X-GOOGLE-CONFERENCE:https://meet.google.com/yzy-fvot-shj
+X-MICROSOFT-CDO-OWNERAPPTID:524108439
+CREATED:20240702T071016Z
+DESCRIPTION:-::~:~::~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~
+ :~:~:~:~:~:~:~:~::~:~::-\nUnirse con Google Meet: https://meet.google.com/y
+ zy-fvot-shj\nO marca el (ES) +34 960 46 31 08 PIN: 937150004#\nMás opciones
+  para unirse: https://tel.meet/yzy-fvot-shj?pin=8857485207945&hs=7\n\nMás i
+ nformación sobre Meet: https://support.google.com/a/users/answer/9282720\n\
+ nNo edites esta sección.\n-::~:~::~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~
+ :~:~:~:~:~:~:~:~:~:~:~:~:~:~:~::~:~::-
+LAST-MODIFIED:20240702T094358Z
+LOCATION:
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Charla Fic Andrés
+TRANSP:OPAQUE
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:This is an event reminder
+TRIGGER:-P0DT0H10M0S
+END:VALARM
+END:VEVENT
+END:VCALENDAR

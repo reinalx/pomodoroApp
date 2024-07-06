@@ -9,7 +9,6 @@ import { TIME_FOCUS_BLOCK, TIME_REST_BLOCK } from '../constants/crono'
 import { useGlobalContext } from '../context/GlobalProvider'
 
 const Crono = ({ otherStyles }) => {
-  const [task, setTask] = useState('')
   const { isModalOpen, setIsModalOpen, isActive } = useGlobalContext()
 
   const formatTime = (time) => {
@@ -18,7 +17,6 @@ const Crono = ({ otherStyles }) => {
   const handleOnChange = (text) => {
     setTask(text)
   }
-
   const {
     minutes,
     seconds,
@@ -28,16 +26,18 @@ const Crono = ({ otherStyles }) => {
     startCrono,
     resetCrono,
     progressCrono,
-    finishCycle,
     cycle,
-    nextCycle
-  } = useCrono(10, TIME_REST_BLOCK, 600) // Hacer que el usuario pueda cambiar el tiempo de la block de resto
+    nextCycle,
+    setTask,
+    task
+  } = useCrono(TIME_FOCUS_BLOCK, TIME_REST_BLOCK, 600) // Hacer que el usuario pueda cambiar el tiempo de la block de resto
 
   // Función para asegurar que los números siempre tengan dos dígitos
 
   return (
-    <View className={`justify-between bg-slate-300 pt-8 rounded-t-3xl  space-y-4 ${otherStyles}`}>
-
+    <View
+      className={`justify-between bg-slate-50 pt-8 rounded-t-3xl  space-y-4 ${otherStyles}`}
+    >
       {/* añadir animación de pulso */}
       <CircularProgress
         progress={progressCrono}
@@ -67,19 +67,21 @@ const Crono = ({ otherStyles }) => {
 
       <View className="flex-row m-12">
         <View className="flex-grow ">
-          <InputTask onChange={handleOnChange} />
+          <InputTask onChange={handleOnChange} value={task} />
         </View>
       </View>
 
       <View className="p-12 flex-row items-center justify-around w-96 ">
         {!isActive
           ? (
-          <ActionButton
-            icon={icons.plus}
-            handlePress={startCrono}
-            disable={!task}
-            otherStyles={'transition-all duration-500 w-52 '}
-          />
+          <View className="justify-center items-center h-24">
+            <ActionButton
+              icon={icons.plus}
+              handlePress={startCrono}
+              disable={!task}
+              otherStyles={'transition-all duration-500 w-52'}
+            />
+          </View>
             )
           : (
           <>
@@ -104,10 +106,14 @@ const Crono = ({ otherStyles }) => {
               />
                 )}
 
-            <ActionButton icon={icons.next} handlePress={() => {
-              pause()
-              setIsModalOpen(true)
-            }} />
+            <ActionButton
+              icon={icons.next}
+              handlePress={() => {
+                pause()
+                console.log('next')
+                setIsModalOpen(true)
+              }}
+            />
           </>
             )}
       </View>

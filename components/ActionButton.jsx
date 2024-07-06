@@ -1,7 +1,7 @@
 import { Text, Image, TouchableOpacity, View } from 'react-native'
 
 const ActionButton = ({ icon, handlePress, disable, otherStyles }) => {
-  const bgColor = disable ? 'bg-slate-400' : 'bg-slate-300'
+  const bgColor = disable ? 'bg-slate-300' : 'bg-slate-200'
   return (
     <TouchableOpacity
       activeOpaticy={0.8}
