@@ -1,6 +1,6 @@
 import { View, Text, Modal, TouchableOpacity } from 'react-native'
 
-export const CustomModal = ({ visible, setVisible, children, otherStyles, title, textButton }) => {
+export const CustomModal = ({ visible, setVisible, children, otherStyles, title, textButton, onPress }) => {
   return (
     <Modal
       animationType="slide"
@@ -17,6 +17,7 @@ export const CustomModal = ({ visible, setVisible, children, otherStyles, title,
           <TouchableOpacity
             onPress={() => {
               setVisible(false)
+              onPress && onPress()
             }}
             className="bg-sky-200  w-32 items-center justify-center rounded-xl p-2 text-center  font-semibold"
           >

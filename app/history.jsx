@@ -1,4 +1,4 @@
-import { View, Text, FlatList, TouchableOpacity, Image, ActivityIndicator } from 'react-native'
+import { View, Text, FlatList, TouchableOpacity, Image } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import GradientText from '../components/GradiantText'
 import TaskItem from '../components/TaskItem'
@@ -7,6 +7,7 @@ import icons from '../constants/icons'
 import { useEffect, useState } from 'react'
 import { clearAllTasks, getAllTasks } from '../lib/useStorage'
 import { CustomModal } from '../components/CustomModal'
+import * as NavigationBar from 'expo-navigation-bar'
 
 const History = () => {
   const [data, setData] = useState([])
@@ -15,11 +16,15 @@ const History = () => {
 
   useEffect(() => {
     setLoading(true)
-    getAllTasks().then((tasks) => {
-      setData(tasks)
-    }).finally(() => setLoading(false))
+    getAllTasks()
+      .then((tasks) => {
+        setData(tasks)
+      })
+      .finally(() => setLoading(false))
   }, [])
 
+  NavigationBar.setBackgroundColorAsync('#e2e8f0') // Cambia el color de fondo del navegador de la pantalla
+  NavigationBar.setButtonStyleAsync('dark') // Cambia el color de fondo del botón de navegación
   return (
     <SafeAreaView className=" w-full h-full bg-slate-200 ">
       <FlatList
@@ -48,6 +53,7 @@ const History = () => {
                   clearAllTasks().then(() => {
                     setLoading(false)
                     setIsModalOpen(true)
+                    setData([])
                   })
                 }}
               >
@@ -87,10 +93,14 @@ const History = () => {
         refreshing={loading}
       />
 
-      <CustomModal visible={isModalOpen} setVisible={setIsModalOpen} title="Deleted Task!" textButton="Ok">
+      <CustomModal
+        visible={isModalOpen}
+        setVisible={setIsModalOpen}
+        title="Deleted Task!"
+        textButton="Ok"
+      >
         <Text>The registered task has been deleted</Text>
       </CustomModal>
-
     </SafeAreaView>
   )
 }

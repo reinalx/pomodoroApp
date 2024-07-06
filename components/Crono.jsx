@@ -7,6 +7,7 @@ import CircularProgress from './CircularProgress'
 import { useCrono } from '../hooks/useCrono'
 import { TIME_FOCUS_BLOCK, TIME_REST_BLOCK } from '../constants/crono'
 import { useGlobalContext } from '../context/GlobalProvider'
+import { CustomModal } from './CustomModal'
 
 const Crono = ({ otherStyles }) => {
   const { isModalOpen, setIsModalOpen, isActive } = useGlobalContext()
@@ -117,40 +118,22 @@ const Crono = ({ otherStyles }) => {
           </>
             )}
       </View>
-      <Modal
-        animationType="slide"
-        transparent={true}
+      <CustomModal
         visible={isModalOpen}
-        onRequestClose={() => setIsModalOpen(false)}
+        setVisible={setIsModalOpen}
+        title="Time is up!"
+        textButton="Continue"
+        onPress={nextCycle}
       >
-        <View className="w-full h-full justify-center items-center">
-          <View className="justify-around items-center space-y-2 bg-white rounded-xl p-4 w-52 h-36 opacity-90">
-            <View className="space-y-1">
-              <Text className="font-bold text-sl ">Time is up!</Text>
-              {cycle % 2 === 0
-                ? (
-                <Text className="font-light">
-                  You have finish the rest block
-                </Text>
-                  )
-                : (
-                <Text className="font-light">
-                  You have finish the rest block
-                </Text>
-                  )}
-            </View>
-            <TouchableOpacity
-              onPress={() => {
-                setIsModalOpen(false)
-                nextCycle()
-              }}
-              className="bg-sky-200  w-32 items-center justify-center rounded-xl p-2 text-center  font-semibold"
-            >
-              <Text className="text-slate-800 font-normal">Continue</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </Modal>
+        {cycle % 2 === 0
+          ? (
+          <Text className="font-light">You have finish the rest block</Text>
+            )
+          : (
+          <Text className="font-light">You have finish the focus block</Text>
+            )}
+      </CustomModal>
+
     </View>
   )
 }

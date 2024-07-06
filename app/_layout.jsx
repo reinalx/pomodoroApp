@@ -1,6 +1,5 @@
 import { Stack } from 'expo-router'
 import { GlobalProvider } from '../context/GlobalProvider'
-
 const RootLayout = () => {
   return (
     <>
